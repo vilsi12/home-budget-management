@@ -1,0 +1,32 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    padding: 30px;
+    background-color: #ff9999 !important;
+}
+
+#expense-img {
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 80%;
+    height: 70%;
+}
+
+.btn-primary {
+    background-color: #555968 !important;
+    border-color: #262939 !important;
+}
+
+.v-line{
+    height: 94%;
+    width: 1px;
+    background-color: #ccc;
+}
+
+#expense-logo {
+    width: 90px;
+    height: 90px;
+}

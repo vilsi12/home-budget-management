@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" href="{% url 'expense_manager:dashboard' %}">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav ml-auto mx-5 nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dateFilter" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Date Filter
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <h6 class="dropdown-item" id="dateNoFilter">Any Date</h6>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-item" id="today">Today</h6>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-item" id="thisWeek">This Week</h6>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-item" id="previousWeek">Previous Week</h6>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-item" id="thisMonth">This Month</h6>
+            </div>
+        </div>
+        <form class="form-inline my-2 my-lg-0" method="GET" action="" id="searchForm">
+            <input class="form-control mr-sm-2" type="search" id="searchInput" placeholder="Name or Price" aria-label="Search">
+            <button class="btn btn-outline my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="navbar-nav mx-5 nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="imageFilter" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Image Filter
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <h6 class="dropdown-item" id="imageNoFilter">All</h6>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-item" id="hasImage">Has Image</h6>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-item" id="noImage">No Image</h6>
+            </div>
+        </div>
+        <div class="navbar-nav d-flex justify-content-right nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                {{ username }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>

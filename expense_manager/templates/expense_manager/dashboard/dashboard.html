@@ -1,0 +1,92 @@
+{% extends 'expense/base.html' %} {% block title %} Dashboard!! {% endblock title %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<script src="{% static 'js/submit.js' %}"></script>
+<script src="{% static 'js/filter.js' %}"></script>
+{% endblock head %} {% block body %}
+
+<div class="container-fluid">
+    {% include 'expense_manager/nav_bar.html' %}
+    <div class="row">
+        <div class="col-md-3 drawer shadow">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard"
+                    aria-selected="true">Dashboard</a>
+                <a class="nav-link" id="v-pills-all-expenses-tab" data-toggle="pill" href="#v-pills-all-expenses" role="tab" aria-controls="v-pills-all-expenses"
+                    aria-selected="false">All expenses</a>
+                <!-- <a class="`elected="false">Contact Support</a> -->
+            </div>
+        </div>
+        <div class="col-md-9 shadow" style="background-color: #ffe6ff;">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade p-15" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
+                    {% include 'expense_manager/dashboard/dashboard_tab_content.html' %}
+                </div>
+                <div class="tab-pane fade p-15" id="v-pills-all-expenses" role="tabpanel" aria-labelledby="v-pills-all-expenses-tab">
+                    {% include 'expense_manager/dashboard/expense_list.html' with expenses=all_expenses footer=True %}
+                </div>
+                <!-- <div class="tab-pane fade p-15" id="v-pills-report" role="tabpanel" aria-labelledby="v-pills-report-tab">
+                    {% include 'expense_manager/dashboard/report_tab_content.html' %}
+                </div>
+                <div class="tab-pane fade p-15" id="v-pills-analytics" role="tabpanel" aria-labelledby="v-pills-analytics-tab">
+                        {% include 'expense_manager/dashboard/analytics_tab_content.html' %}
+                </div>
+                <div class="tab-pane fade p-15" id="v-pills-contact" role="tabpanel" aria-labelledby="v-pills-contact-tab">
+                    {% include 'expense_manager/dashboard/contact_support_tab_content.html' %}
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- add modal -->
+    {% include 'expense_manager/modal/add_edit.html' %}
+    <!-- image modal -->
+    {% include 'expense_manager/modal/image.html' %}
+    <!-- delete modal -->
+    {% include 'expense_manager/modal/delete.html' %}
+    <!-- complete modal -->
+    {% include 'expense_manager/modal/complete.html' %}
+</div>
+
+<script>
+    $(function(e){
+        // change image filter text if image filter applied on refresh
+        if( {{ imagefilter }} == 3){
+            $('#imageFilter').text('Has Image')
+        }else if( {{ imagefilter }} == 2){
+            $('#imageFilter').text('No Image')
+        }else{
+            $('#imageFilter').text('Image Filter')
+        }
+        
+        // change date filter text if date filter applied on refresh
+        var datefilter = "{{ datefilter }}"
+        if( datefilter == 'today' ){
+            $('#dateFilter').text('Today')
+
+        }else if( datefilter  == 'this-week'){
+            $('#dateFilter').text('This Week')
+        }else if( datefilter  == 'previous-week'){
+            $('#dateFilter').text('Previous Week')
+        }else if( datefilter  == 'this-month'){
+            $('#dateFilter').text('This Month')
+        }else{
+            $('#dateFilter').text('Date Filter')
+        }
+
+        // show expense tab if parameter found
+        var show_expense_tab = {{ show_expense_tab|yesno:"true,false" }};
+        if (show_expense_tab){
+            $('#v-pills-all-expenses').addClass('show active')
+            $('#v-pills-all-expenses-tab').addClass('active')
+        }else{
+            $('#v-pills-dashboard').addClass('show active')
+            $('#v-pills-dashboard-tab').addClass('active')
+        }
+
+        
+    });
+    
+</script>
+
+
+{% endblock body %}

@@ -1,0 +1,41 @@
+{% extends 'expense/base.html' %} {% load static %}  {% block head %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}"> {% endblock head %} {% block body %}
+
+<div class="container h-100">
+
+    <div class="row h-100">
+        <div class="card col-md-12 my-auto">
+            <div class="row card-body">
+                <div class="col-md-6">
+                    <div class="card-title text-center">
+                        <strong>
+                        {% block heading %}
+                            
+                        {% endblock heading %}
+                            </strong>
+                    </div>
+                    <div class="text-secondary w-100 text-center">
+                        <i>Don't share your passwords</i>
+                    </div>
+                    <img class="img-fluid" id="expense-img" src="{% static 'images/expense.jpg' %}" alt="Expense Tracker Image">
+                </div>
+                <div class="col-md-1">
+                    <div class="v-line"></div>
+                </div>
+                <div class="col-md-5">
+                    <img class="img-fluid d-block mx-auto" id="expense-logo" src="{% static 'images/expense_logo.jpg' %}" alt="expense logo" width="140" height="140">
+                    
+                    {% block auth %}
+                        
+                    {% endblock auth %}
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock body %}
